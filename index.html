@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CURSOS PARA TREINAMENTO PESSOAL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3b0a6b, #1a2b8f);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+.container {
+    background: white;
+    width: 70%;
+    max-width: 800px;
+    height: 70vh;              /* altura fixa */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-cursos {
+    margin-top: 20px;
+    overflow-y: auto;         /* rolagem interna */
+    padding-right: 10px;
+}
+
+h1 {
+    color: #3b0a6b;
+    margin: 0;
+}
+
+
+        .logo {
+    position: fixed;
+    background:#fff;
+    bottom: -20px;        /* distância do fundo */
+    left: 45%;
+    transform: translateX(0%);
+    width: 150px;       /* ajuste conforme sua logo */
+    opacity: 1;
+    padding:25px;
+    border-radius:20px;
+    
+        }
+
+
+        h1 {
+            color: #3b0a6b;
+            margin-bottom: 25px;
+        }
+
+        .curso {
+            background: linear-gradient(135deg, #5e17eb, #1f4fd8);
+            color: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .curso a {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: white;
+            color: #3b0a6b;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .curso a:hover {
+            background: #e0d7ff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 CURSOS SELECIONADOS</h1>
+
+    <div class="lista-cursos">
+        {% for curso in cursos %}
+            <div class="curso">
+                <h3>{{ curso.nome }}</h3>
+                <p>{{ curso.descr }}</p>
+                <a href="{{ curso.link }}" target="_blank">Acessar curso</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+</body>
+</html>
